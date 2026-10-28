@@ -52,7 +52,7 @@ async function copyJoke () {
     await navigator.clipboard.writeText(text);
     copyBtn.textContent = "Copied!";
     setTimeout(() => {
-      copyBtn.textContent = "Copy!";
+      copyBtn.textContent = "Copy";
     }, 1500);
   } catch (error) {
     alert("Could not copy. Try selecting the text and pressing ctrl+C.");
