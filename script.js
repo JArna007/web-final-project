@@ -8,12 +8,12 @@ GenerateBtn.addEventListener("click", getJoke);
 
 async function getJoke() {
   const category = categorySelect.value;
-  const url = 'https://v2.jokeapi.dev/{category}/Any'
+  const url = `https://v2.jokeapi.dev/joke/${category}?safe-mode`;
 
   try {
     jokeDisplay.textContent = "Loading...";
 
-    const data = await fetch(url);
+    const response = await fetch(url);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -27,9 +27,9 @@ async function getJoke() {
     }
 
     if (data.type === "single") {
-      jokeDisplay.textContent = ___;
+      jokeDisplay.textContent = data.joke;
     } else {
-      jokeDisplay.textContent = ___;
+      jokeDisplay.textContent = `${data.setup} ${data.delivery}`;
     }
   } catch (error) {
     jokeDisplay.textContent = " Could not load a joke. Check your connection and try again.";
