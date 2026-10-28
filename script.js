@@ -3,7 +3,7 @@ console.log("script loaded");
 const GenerateBtn = document.getElementById("generate");
 const categorySelect = document.getElementById("category");
 const jokeDisplay = document.getElementById("joke-display");
-const copyBtn = document.getElementId("copy");
+const copyBtn = document.getElementById("copy");
 
 GenerateBtn.addEventListener("click", getJoke);
 
@@ -49,7 +49,7 @@ async function copyJoke () {
   }
 
   try {
-    await navigator.clipboard.eriteText(text);
+    await navigator.clipboard.writeText(text);
     copyBtn.textContent = "Copied!";
     setTimeout(() => {
       copyBtn.textContent = "Copy!";
