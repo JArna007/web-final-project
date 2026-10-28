@@ -4,7 +4,7 @@ const GenerateBtn = document.getElementById("generate");
 const categorySelect = document.getElementById("category");
 const jokeDisplay = document.getElementById("joke-display");
 
-Generate.addEventListener("click", getJoke);
+GenerateBtn.addEventListener("click", getJoke);
 
 async function getJoke() {
   console.log("clicked");
