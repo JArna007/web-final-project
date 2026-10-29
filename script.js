@@ -4,6 +4,8 @@ const GenerateBtn = document.getElementById("generate");
 const categorySelect = document.getElementById("category");
 const jokeDisplay = document.getElementById("joke-display");
 const copyBtn = document.getElementById("copy");
+const themeToggle = document.getElementById("theme-toggle");
+const savedTheme = localStorage.getItem("theme");
 
 GenerateBtn.addEventListener("click", getJoke);
 
@@ -59,3 +61,14 @@ async function copyJoke () {
     console.error(error);
   }
 }
+
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
