@@ -143,3 +143,5 @@ function renderFavorites() {
     favoritesList.appendChild(li);
   });
 }
+
+renderFavorites();
