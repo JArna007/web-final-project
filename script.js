@@ -6,6 +6,12 @@ const jokeDisplay = document.getElementById("joke-display");
 const copyBtn = document.getElementById("copy");
 const themeToggle = document.getElementById("theme-toggle");
 const savedTheme = localStorage.getItem("theme");
+const saveBtn = document.getElementById("save");
+const favoriteList = document.getElementById("favorites-list");
+
+
+let currentJoke = "";
+let favorites = [];
 
 GenerateBtn.addEventListener("click", getJoke);
 
@@ -72,3 +78,55 @@ themeToggle.addEventListener("click", () => {
   const isDark = document.body.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 });
+
+try {
+  favorites = JSON.parse(localStorage.getItem("favorites")) ||[];
+} catch (error) {
+  favorites = [];
+}
+
+if (data.type === "single") {
+  currentJoke = data.joke;
+} else {
+  currentJoke = `${data.setup} ${data.delivery}`;
+}
+jokeDisplay.textContent = currentJoke;
+
+saveBtn.addEventListener("click", saveJoke);
+
+function saveJoke() {
+  if (currentJoke === "") {
+    alert("Generate a joke first!");
+    return;
+  }
+
+  if (favorites.includes(currentJoke)) {
+    alert("That joke is already in your favorites.");
+    return;
+  }
+
+  favorites.push(currentJoke);
+  localStorage.setItem("favorites", JSON.stringify(favorites));
+  renderFavorites();
+}
+
+function renderFavorites() {
+  favoritesList.innerHTML = "";
+
+  favorites.forEach((joke, index) => {
+    const li = document.createElement("li");
+    li.textContent = joke + " ";
+
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.textContent = "Remove";
+    removeBtn.addEventListener("click", () => {
+      favorite.splice(index, 1);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      renderFavorites();
+    });
+
+    li.appendChild(removeBtn);
+    favoritesList.appendChild(li);
+  });
+}
