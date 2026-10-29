@@ -10,8 +10,24 @@ const saveBtn = document.getElementById("save");
 const favoriteList = document.getElementById("favorites-list");
 
 
+
 let currentJoke = "";
 let favorites = [];
+
+
+
+if (savedTheme === "dark") {
+  document.body.classList.add("dark");
+}
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+
+
 
 GenerateBtn.addEventListener("click", getJoke);
 
@@ -34,6 +50,13 @@ async function getJoke() {
       jokeDisplay.textContent = "No joke found. Try another category.";
       return;
     }
+    
+    if (data.type === "single") {
+      currentJoke = data.joke;
+    } else {
+      currentJoke = `${data.setup} ${data.delivery}`;
+    }
+    jokeDisplay.textContent = currentJoke;
 
     if (data.type === "single") {
       jokeDisplay.textContent = data.joke;
@@ -45,6 +68,8 @@ async function getJoke() {
     console.error(error);
   }
 }
+
+
 
 copyBtn.addEventListener("click", copyJoke);
 
@@ -68,16 +93,7 @@ async function copyJoke () {
   }
 }
 
-if (savedTheme === "dark") {
-  document.body.classList.add("dark");
-}
 
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  const isDark = document.body.classList.contains("dark");
-  localStorage.setItem("theme", isDark ? "dark" : "light");
-});
 
 try {
   favorites = JSON.parse(localStorage.getItem("favorites")) ||[];
@@ -85,12 +101,7 @@ try {
   favorites = [];
 }
 
-if (data.type === "single") {
-  currentJoke = data.joke;
-} else {
-  currentJoke = `${data.setup} ${data.delivery}`;
-}
-jokeDisplay.textContent = currentJoke;
+
 
 saveBtn.addEventListener("click", saveJoke);
 
@@ -109,6 +120,8 @@ function saveJoke() {
   localStorage.setItem("favorites", JSON.stringify(favorites));
   renderFavorites();
 }
+
+
 
 function renderFavorites() {
   favoritesList.innerHTML = "";
