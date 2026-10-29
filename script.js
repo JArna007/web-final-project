@@ -7,7 +7,7 @@ const copyBtn = document.getElementById("copy");
 const themeToggle = document.getElementById("theme-toggle");
 const savedTheme = localStorage.getItem("theme");
 const saveBtn = document.getElementById("save");
-const favoriteList = document.getElementById("favorites-list");
+const favoritesList = document.getElementById("favorites-list");
 
 
 
@@ -134,7 +134,7 @@ function renderFavorites() {
     removeBtn.type = "button";
     removeBtn.textContent = "Remove";
     removeBtn.addEventListener("click", () => {
-      favorite.splice(index, 1);
+      favorites.splice(index, 1);
       localStorage.setItem("favorites", JSON.stringify(favorites));
       renderFavorites();
     });
