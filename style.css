@@ -23,8 +23,8 @@ body {
 button,
 select {
   background-color: var(--button-bg);
-  color: var(-button-text);
-  border: 1pv solid var(--border);
+  color: var(--button-text);
+  border: 1px solid var(--border);
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
 }
