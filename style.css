@@ -1,1 +1,30 @@
+:root {
+  --bg: #ffffff;
+  --text: #222222;
+  --button-bg: #f0f0f0;
+  --button-text: #222222;
+  --border: #999999;
+}
 
+body.dark {
+  --bg: #121212;
+  --text: #f1f1f1;
+  --button-bg: #2a2a2a;
+  --button-text: #f1f1f1;
+  --border: #666666;
+}
+
+body {
+  background-color: var(--button-bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+button,
+select {
+  background-color: var(--button-bg);
+  color: var(-button-text);
+  border: 1pv solid var(--border);
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+}
