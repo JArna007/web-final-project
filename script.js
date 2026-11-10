@@ -37,7 +37,7 @@ async function getJoke() {
   const url = `https://v2.jokeapi.dev/joke/${category}?safe-mode`;
 
 try {
-    jokeDisplay.textContent = "Loading...";
+  jokeDisplay.textContent = "Loading...";
 
     const response = await fetch(url);
     if (!response.ok) {
@@ -47,16 +47,10 @@ try {
     const data = await response.json();
     console.log(data);
 
-    if (data.error) {
-      currentJoke = "";
-      jokeDisplay.textContent = "No joke found. Try another category.";
-      return;
-    }
-    
     if (data.type === "single") {
-      jokeDisplay.textContent = data.joke;
+      currentJoke = data.joke;
     } else {
-      jokeDisplay.textContent = `${data.setup} ${data.delivery}`;
+      currentJoke = `${data.setup} ${data.delivery}`;
     }
     jokeDisplay.textContent = currentJoke;
 
@@ -113,13 +107,13 @@ function saveJoke() {
 }
 
 function renderFavorites() {
-  favoritesList.innerHTML = "";  
+  favoritesList.innerHTML = "";
 
-if (favorites.length === 0) {
-  const empty = document.createElement("li");
-  empty.textContent = "No favorites yet. Save a joke to see it here.";
-  favoritesList.appendChild(empty);
-}
+  if (favorites.length === 0) {
+    const empty = document.createElement("li");
+    empty.textContent = "No favorites yet. Save a joke to see it here.";
+    favoritesList.appendChild(empty);
+  }
 
   favorites.forEach((joke, index) => {
     const li = document.createElement("li");
