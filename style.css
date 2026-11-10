@@ -35,6 +35,11 @@ h1 {
   text-align: center;
 }
 
+ h2 {
+   border-bottom: 2px solid var(--accent);
+   padding-bottom: 0.25rem;
+ }
+
 body.dark {
   --bg: #121212;
   --text: #f1f1f1;
@@ -48,6 +53,7 @@ body {
   background-color: var(--bg);
   color: var(--text);
   font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 button,
@@ -85,6 +91,14 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  alighn-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
 }
 
 #generator {
