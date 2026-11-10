@@ -33,6 +33,7 @@
 h1 {
   color: var(--accent);
   text-align: center;
+  font-family: "Comic Sans MS", "Chalkboard SE", cursive;
 }
 
  h2 {
