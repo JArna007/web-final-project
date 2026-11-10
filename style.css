@@ -31,7 +31,7 @@
 }
 
 h1 {
-  color; var(--accent);
+  color: var(--accent);
   text-align: center;
 }
 
