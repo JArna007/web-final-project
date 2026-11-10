@@ -31,7 +31,6 @@ if (favorites.length === 0) {
   const empty = document.createElement("l1");
   empty.textContent = "No favorites yet. Save a joke to see it here.";
   favoritesList.appendChild(empty);
-  return;
 }
 
 
