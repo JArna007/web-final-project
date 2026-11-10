@@ -32,6 +32,9 @@ themeToggle.addEventListener("click", () => {
 
 generateBtn.addEventListener("click", getJoke);
 
+
+
+
 async function getJoke() {
   const category = categorySelect.value;
   const url = `https://v2.jokeapi.dev/joke/${category}?safe-mode`;
@@ -69,6 +72,9 @@ async function getJoke() {
 
 copyBtn.addEventListener("click", copyJoke);
 
+
+
+
 async function copyJoke () {
   const text = jokeDisplay.textContent;
 
@@ -91,6 +97,9 @@ async function copyJoke () {
 
 saveBtn.addEventListener("click", saveJoke);
 
+
+
+
 function saveJoke() {
   if (currentJoke === "") {
     alert("Generate a joke first!");
@@ -106,6 +115,9 @@ function saveJoke() {
   localStorage.setItem("favorites", JSON.stringify(favorites));
   renderFavorites();
 }
+
+
+
 
 function renderFavorites() {
   favoritesList.innerHTML = "";
