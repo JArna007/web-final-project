@@ -36,8 +36,8 @@ async function getJoke() {
   const category = categorySelect.value;
   const url = `https://v2.jokeapi.dev/joke/${category}?safe-mode`;
 
-try {
-  jokeDisplay.textContent = "Loading...";
+  try {
+    jokeDisplay.textContent = "Loading...";
 
     const response = await fetch(url);
     if (!response.ok) {
@@ -47,11 +47,12 @@ try {
     const data = await response.json();
     console.log(data);
 
-    if (data.type === "single") {
-      currentJoke = data.joke;
-    } else {
-      currentJoke = `${data.setup} ${data.delivery}`;
+    if (data.error) {
+      currentJoke = "";
+      jokeDisplay.textContent = "No joke found. Try another category.";
+      return:
     }
+
     jokeDisplay.textContent = currentJoke;
 
     if (data.type === "single") {
