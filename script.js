@@ -53,7 +53,7 @@ async function getJoke() {
     if (data.error) {
       currentJoke = "";
       jokeDisplay.textContent = "No joke found. Try another category.";
-      return:
+      return;
     }
 
     jokeDisplay.textContent = currentJoke;
