@@ -41,6 +41,7 @@ async function getJoke() {
 
   try {
     jokeDisplay.textContent = "Loading...";
+    currentJoke = "";
 
     const response = await fetch(url);
     if (!response.ok) {
@@ -56,13 +57,12 @@ async function getJoke() {
       return;
     }
 
-    jokeDisplay.textContent = currentJoke;
-
     if (data.type === "single") {
-      jokeDisplay.textContent = data.joke;
+      currentJoke = data.joke;
     } else {
-      jokeDisplay.textContent = `${data.setup} ${data.delivery}`;
+      currentJoke = `${data.setup} ${data.delivery}`;
     }
+    jokeDisplay.textContent = currentJoke;
   } catch (error) {
     currentJoke = "";
     jokeDisplay.textContent = "Could not load a joke. Check your connection and try again.";
@@ -75,10 +75,10 @@ copyBtn.addEventListener("click", copyJoke);
 
 
 
-async function copyJoke () {
-  const text = jokeDisplay.textContent;
+async function copyJoke() {
+  const text = currentJoke;
 
-  if (text === "" || text === "Loading...") {
+  if (text === "") {
     alert("Generate a joke first!");
     return;
   }
