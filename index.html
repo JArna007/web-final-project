@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,39 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joke Generator</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:,">  
+  <link rel="icon" href="data:,">
 </head>
 
-  <body>
-    <header>
-      <h1>Joke Generator</h1>
-      
-    </header>
+<body>
+  <header>
+    <h1>Joke Generator</h1>
+  </header>
 
-    <main>
-      <section id="generator">
-        <label for="category">Category</label>
-        <select id="category">
-          <option value="Any">Any</option>
-          <option value="Programming">Programming</option>
-          <option value="Pun">Pun</option>
-          <option value="Misc">Misc</option>
-        </select>
+  <main>
+    <section id="generator">
+      <label for="category">Category</label>
+      <select id="category">
+        <option value="Any">Any</option>
+        <option value="Programming">Programming</option>
+        <option value="Pun">Pun</option>
+        <option value="Misc">Misc</option>
+      </select>
       <button id="generate" type="button">Generate New</button>
 
-        <div id="joke-display" aria-live="polite"></div>
-        <button id="copy" type="button">Copy</button>
-        <button id="save" type="button">Save</button>
-      </section>
+      <div id="joke-display" aria-live="polite"></div>
+      <button id="copy" type="button">Copy</button>
+      <button id="save" type="button">Save</button>
+    </section>
 
-      <section id="favorites">
-        <h2>Favorites</h2>
-        <ul id="favorites-list"></ul>
-      </section>
-    </main>
+    <section id="favorites">
+      <h2>Favorites</h2>
+      <ul id="favorites-list"></ul>
+    </section>
+  </main>
 
   <footer>
-    <p> Jokes from JokeAPI</p>
+    <p>Jokes from JokeAPI</p>
     <button id="theme-toggle" type="button">Toggle theme</button>
   </footer>
 
